@@ -1,0 +1,56 @@
+{
+  "name": "nodejs-encryption-api-example",
+  "version": "1.0.0",
+  "description": "Example of encrypting/decrypting data thru an API using node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timoa/nodejs-encryption-api-example.git"
+  },
+  "keywords": [
+    "encryption",
+    "api",
+    "endpoint",
+    "datastore"
+  ],
+  "author": {
+    "name": "Damien Laureaux",
+    "email": "d.laureaux@timoa.com",
+    "url": "https://timoa.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timoa/nodejs-encryption-api-example/issues"
+  },
+  "homepage": "https://github.com/timoa/nodejs-encryption-api-example#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.1"
+  },
+  "engines": {
+    "node": ">=8.0"
+  },
+  "os": [
+    "linux",
+    "win32",
+    "darwin"
+  ],
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "chai": "^4.2.0",
+    "request": "^2.88.0",
+    "acorn": "^6.0.4",
+    "acorn-jsx": "^5.0.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "espree": "^4.1.0"
+  }
+}

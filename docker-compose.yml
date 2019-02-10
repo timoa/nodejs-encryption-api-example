@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  api:
+    image: timoa/nodejs-encryption-api-example:latest
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 3000:3000
+    restart: always
