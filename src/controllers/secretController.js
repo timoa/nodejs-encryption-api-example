@@ -31,7 +31,6 @@ exports.addSecret = async (req) => {
       id: req.body.id,
       value: encryptedData,
     });
-    logger.info(secret);
     return secret.save();
   } catch (err) {
     throw boom.boomify(err);
