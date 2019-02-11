@@ -40,6 +40,7 @@ npm start
 You need to generate an encryption key that you will use to encrypt the data saved in MongoDB.
 
 You can use this online website to create your key (256 bit):
+
 http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
 
 Fill the following curl command with your key and value is your JSON data you want to encrypt.
