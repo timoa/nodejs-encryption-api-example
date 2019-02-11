@@ -7,10 +7,15 @@ const db = require('./lib/db');
 // Connect to MongoDB
 db.connect();
 
+// Register the Health plugin
+fastify.register(require('fastify-healthcheck'), {
+  healthcheckUrl: `/${config.healthCheck.path}`,
+});
+
 // Import Swagger Options
 const swagger = require('./config/swagger');
 
-// Register Swagger
+// Register the Swagger plugin
 fastify.register(require('fastify-swagger'), swagger.options);
 
 // Load the routes
@@ -23,7 +28,7 @@ const start = async () => {
   try {
     await fastify.listen(config.app.port);
     fastify.swagger();
-    logger.info(`Server listening on ${fastify.server.address().port}`);
+    logger.info(`Server listening on http://${config.app.host}:${fastify.server.address().port}`);
   } catch (err) {
     logger.error(err);
     process.exit(1);

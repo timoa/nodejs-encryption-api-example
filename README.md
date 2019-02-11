@@ -19,7 +19,7 @@ This project doesn't cover encryption in transit (SSL) and not meant to be use i
 - Health check endpoint to check if the app is still alive
 - Logs with correlation ID
 - MongoDB as datastore (using Mongoose)
-- Swagger support for specification/documentation
+- Swagger support for API specifications/documentation
 
 ## Install
 
@@ -33,6 +33,12 @@ node install
 npm start
 ```
 
+## Documentation / Specifications
+
+You can access Swagger here:
+
+[http://localhost:3000/swagger][1]
+
 ## How to use it
 
 ### Generate an Encryption key (256 bit / 32 chars length)
@@ -41,7 +47,7 @@ You need to generate an encryption key that you will use to encrypt the data sav
 
 You can use this online website to create your key (256 bit):
 
-http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
+[www.allkeysgenerator.com][2]
 
 Fill the following curl command with your key and value is your JSON data you want to encrypt.
 
@@ -112,4 +118,8 @@ npm test
 - ~~Crypto library~~
 - ~~API storing endpoint~~
 - ~~API retrieval endpoint~~
+- Swagger detailled schema (WIP)
 - PM2 support for the Docker container (to restart the app in case of failure)
+
+[1]: http://localhost:3000/swagger
+[2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
