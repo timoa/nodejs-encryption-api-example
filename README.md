@@ -1,4 +1,4 @@
-# (WIP) Encryption API endpoints with Node.js
+# Encryption API endpoints with Node.js
 
 Example of encrypting/decrypting data thru an API using node.js.
 
