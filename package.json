@@ -2,9 +2,9 @@
   "name": "nodejs-encryption-api-example",
   "version": "1.0.0",
   "description": "Example of encrypting/decrypting data thru an API using node.js",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node src/index",
     "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
@@ -28,7 +28,13 @@
   },
   "homepage": "https://github.com/timoa/nodejs-encryption-api-example#readme",
   "dependencies": {
-    "express": "^4.16.4",
+    "boom": "^7.3.0",
+    "crypto": "^1.0.1",
+    "fastify": "^1.14.1",
+    "fastify-swagger": "^1.2.0",
+    "http": "0.0.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.4.11",
     "uuid": "^3.3.2",
     "winston": "^3.2.1"
   },
