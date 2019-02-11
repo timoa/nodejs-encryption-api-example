@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const config = require('../config/config.json');
+const config = require('../src/config/config.json');
 
 // Configuration
 describe('Config file', () => {

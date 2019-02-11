@@ -38,4 +38,4 @@ npm test
 - Crypto library
 - API storing endpoint
 - API retrieval endpoint
-- PM2 support for the Docker container
+- PM2 support for the Docker container (to restart the app in case of failure)

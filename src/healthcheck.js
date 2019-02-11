@@ -3,7 +3,7 @@ const logger = require('./lib/logger');
 
 const options = {
   host: '0.0.0.0',
-  port: '3000',
+  port: '9999',
   path: '/_health',
   method: 'HEAD',
   timeout: 2000,
