@@ -1,13 +1,13 @@
 const request = require('request');
 const { expect } = require('chai');
-const config = require('../config/config.json');
+const config = require('../src/config/config.json');
 
 // Server
-describe('Server response', () => {
-  it('should return 200', (done) => {
+describe('Root endpoint response', () => {
+  it('should return 404', (done) => {
     request.get(`http://${config.app.host}:${config.app.port}/`, (err, res) => {
       if (err) throw err;
-      expect(res.statusCode).to.equal(200);
+      expect(res.statusCode).to.equal(404);
       done();
     });
   });
