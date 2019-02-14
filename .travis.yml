@@ -8,7 +8,6 @@ services:
 
 before_install:
   - docker build -t timoa/nodejs-encryption-api-example .
-  - docker run -d -p 127.0.0.1:3000:3000 timoa/nodejs-encryption-api-example
   - docker-compose up
   - docker ps -a
 
