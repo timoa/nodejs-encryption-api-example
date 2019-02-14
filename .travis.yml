@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - "node"
 
+script:
+    - npm start && npm test
+
 notifications:
   email:
     on_success: never
