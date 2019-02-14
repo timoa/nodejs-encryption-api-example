@@ -100,7 +100,13 @@ This will return this payload (the data has been stringify):
 [
     {
         "id": "test-01",
-        "value": "{\"first_name\":\"firstname\",\"last_name\":\"lastname\",\"email\":\"email@email.com\",\"password\":\"app123\",\"password_confirmation\":\"app123\"}"
+        "value": {
+            "first_name": "firstname",
+            "last_name": "lastname",
+            "email": "email@email.com",
+            "password": "app123",
+            "password_confirmation": "app123"
+        }
     }
 ]
 ```

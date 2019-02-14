@@ -2,10 +2,9 @@ const boom = require('boom');
 const _ = require('lodash');
 const Secret = require('../models/secret');
 const crypto = require('../lib/crypto');
-const logger = require('../lib/logger');
 
-// Get single secret by ID
-exports.getSingleSecret = async (req) => {
+// Get secrets by ID
+exports.getSecrets = async (req) => {
   try {
     const encryptedSecrets = await Secret.find({ id: req.params.id });
     const secrets = [];
@@ -13,7 +12,7 @@ exports.getSingleSecret = async (req) => {
     _.forEach(encryptedSecrets, (secret) => {
       secrets.push({
         id: secret.id,
-        value: crypto.decrypt(secret.value, req.body.encryption_key),
+        value: JSON.parse(crypto.decrypt(secret.value, req.body.encryption_key)),
       });
     });
 
@@ -26,25 +25,18 @@ exports.getSingleSecret = async (req) => {
 // Add a new secret
 exports.addSecret = async (req) => {
   try {
-    const encryptedData = crypto.encrypt(JSON.stringify(req.body.value), req.body.encryption_key);
+    // Cipher data must be a string or a buffer
+    const unencryptedSecret = JSON.stringify(req.body.value);
+
+    // Encrypt secret with the encryption key passed by POST
+    const encryptedSecret = crypto.encrypt(unencryptedSecret, req.body.encryption_key);
+
+    // Save the encrypted Secret under MongoDB
     const secret = new Secret({
       id: req.body.id,
-      value: encryptedData,
+      value: encryptedSecret,
     });
     return secret.save();
-  } catch (err) {
-    throw boom.boomify(err);
-  }
-};
-
-// Update an existing secret
-exports.updateSecret = async (req) => {
-  try {
-    const { id } = req.params.id;
-    const secret = req.body;
-    const { ...updateData } = secret;
-    const update = await Secret.findByIdAndUpdate(id, updateData, { new: true });
-    return update;
   } catch (err) {
     throw boom.boomify(err);
   }

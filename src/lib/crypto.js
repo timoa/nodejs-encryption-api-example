@@ -21,10 +21,13 @@ function encrypt(data, encryptionKey) {
   const cipher = crypto.createCipheriv(encryptionType, Buffer.from(encryptionKey), iv);
 
   // Encrypt the data
-  let encrypted = cipher.update(data);
-  encrypted = Buffer.concat([encrypted, cipher.final()]);
+  let encryptedSecret = cipher.update(data);
+  encryptedSecret = Buffer.concat([encryptedSecret, cipher.final()]);
 
-  return `${iv.toString('hex')}:${encrypted.toString('hex')}`;
+  // Embedded IV with the encrypted secret
+  const encryptedData = `${iv.toString('hex')}:${encryptedSecret.toString('hex')}`;
+
+  return encryptedData;
 }
 
 /**
@@ -35,21 +38,21 @@ function encrypt(data, encryptionKey) {
  * @returns {String}
  */
 function decrypt(data, encryptionKey) {
-  // Retrieve the IV from the beginning of the encrypted data
-  const dataTmp = data.split(':');
-  const iv = Buffer.from(dataTmp.shift(), 'hex');
+  // Retrieve the IV from the encrypted data
+  const encryptedData = data.split(':');
+  const iv = Buffer.from(encryptedData.shift(), 'hex');
 
-  // Retrieve the data
-  const encryptedData = Buffer.from(dataTmp.join(':'), 'hex');
+  // Retrieve the secret
+  const encryptedSecret = Buffer.from(encryptedData.join(':'), 'hex');
 
   // Decipher
   const decipher = crypto.createDecipheriv(encryptionType, Buffer.from(encryptionKey), iv);
 
   // Decrypt the data
-  let decrypted = decipher.update(encryptedData);
-  decrypted = Buffer.concat([decrypted, decipher.final()]);
+  let secret = decipher.update(encryptedSecret);
+  secret = Buffer.concat([secret, decipher.final()]);
 
-  return decrypted.toString();
+  return secret;
 }
 
 module.exports = { encrypt, decrypt };
