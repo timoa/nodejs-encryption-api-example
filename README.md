@@ -1,5 +1,7 @@
 # Encryption API endpoints with Node.js
 
+[![Build Status](https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master)](https://travis-ci.org/timoa/nodejs-encryption-api-example)
+
 Example of encrypting/decrypting data thru an API using node.js.
 
 The idea with this example is to test how to store encrypted data under a datastore (ex. MongoDB) and keep control of your data by providing the encryption key for each call.
