@@ -13,6 +13,7 @@ before_install:
 
 script:
     - npm test
+    - docker-compose down
 
 notifications:
   email:
