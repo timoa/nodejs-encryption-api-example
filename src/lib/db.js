@@ -6,7 +6,7 @@ const config = require('../config/config.json');
  * MongoDB connection
  */
 function connect() {
-  mongoose.connect(`mongodb://${config.app.host}:27017/${config.app.name}`, {
+  mongoose.connect(`mongodb://0.0.0.0:27017/${config.app.name}`, {
     useNewUrlParser: true,
   })
     .then(() => logger.info('MongoDB connected'))
