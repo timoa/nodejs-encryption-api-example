@@ -4,6 +4,8 @@ const config = require('./config/config.json');
 const routes = require('./routes');
 const db = require('./lib/db');
 
+const port = process.env.NODE_PORT || config.app.port;
+
 // Connect to MongoDB
 db.connect();
 
@@ -26,9 +28,11 @@ routes.forEach((route) => {
 // Start the Fastify HTTP server
 const start = async () => {
   try {
-    await fastify.listen(config.app.port);
-    fastify.swagger();
-    logger.info(`Server listening on http://${config.app.host}:${fastify.server.address().port}`);
+    await fastify.listen(port)
+      .then((address) => {
+        fastify.swagger();
+        logger.info(`Server listening on ${address}`);
+      });
   } catch (err) {
     logger.error(err);
     process.exit(1);
