@@ -1,4 +1,4 @@
-ARG nodeVersion=9.11.1
+ARG nodeVersion=10.15.1
 FROM node:${nodeVersion}-alpine
 ARG appPort=3000
 
@@ -30,8 +30,10 @@ RUN \
       npm install --production --unsafe-perm && \
       npm cache clean --force
 
-RUN chown -R app-user /opt/app
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.0/wait /wait
+
+RUN chmod +x /wait && chown -R app-user /opt/app
 USER app-user
 
 EXPOSE ${appPort}
-CMD [ "npm", "start" ]
+CMD /wait && npm start
