@@ -4,11 +4,7 @@ const config = require('../src/config/config.json');
 // Configuration
 describe('Config file', () => {
   it('expect "app.name" to be a string', (done) => {
-    expect(config.app.host).to.be.a('string');
-    done();
-  });
-  it('expect "app.host" to be a string', (done) => {
-    expect(config.app.host).to.be.a('string');
+    expect(config.app.name).to.be.a('string');
     done();
   });
   it('expect "app.port" to be a number', (done) => {

@@ -19,7 +19,7 @@ describe('Add Secret endpoint response', () => {
   it('should return 200', (done) => {
     const options = {
       method: 'POST',
-      url: `http://${config.app.host}:${config.app.port}/api/secrets`,
+      url: `http://localhost:${config.app.port}/api/secrets`,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ describe('Get Secret(s) endpoint response', () => {
   it('should return 200', (done) => {
     const options = {
       method: 'POST',
-      url: `http://${config.app.host}:${config.app.port}/api/secrets/${id}`,
+      url: `http://localhost:${config.app.port}/api/secrets/${id}`,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
