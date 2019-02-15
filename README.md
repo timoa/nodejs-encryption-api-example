@@ -55,7 +55,7 @@ Fill the following curl command with your key and value is your JSON data you wa
 
 ``` bash
 curl -X POST \
-  http://127.0.0.1:3000/api/secrets \
+  http://127.0.0.1:3000/api/secrets/add \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -88,10 +88,11 @@ To get your data back thru a search by ID (`test-01` in this example), you can t
 
 ``` bash
 curl -X POST \
-  http://127.0.0.1:3000/api/secrets/test-01 \
+  http://127.0.0.1:3000/api/secrets \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
+    "id": "test-01",
     "encryption_key": "p2s5v8y/B?E(H+MbQeShVmYq3t6w9z$C"
 }'
 ```

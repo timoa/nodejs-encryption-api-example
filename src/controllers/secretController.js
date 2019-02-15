@@ -6,7 +6,7 @@ const crypto = require('../lib/crypto');
 // Get secrets by ID
 exports.getSecrets = async (req) => {
   try {
-    const encryptedSecrets = await Secret.find({ id: req.params.id });
+    const encryptedSecrets = await Secret.find({ id: req.body.id });
     const secrets = [];
 
     _.forEach(encryptedSecrets, (secret) => {
