@@ -23,17 +23,33 @@ This project doesn't cover encryption in transit (SSL) and not meant to be use i
 - MongoDB as datastore (using Mongoose)
 - Swagger support for API specifications/documentation
 
-## Install
+## Run locally
+
+### Install
 
 ``` bash
 node install
 ```
 
-## Run
+### Run
 
 ``` bash
 npm start
 ```
+
+## Docker
+
+### Docker Compose
+
+Be sure that your not running MongoDB + another node.js app that uses the 3000 port
+
+```bash
+docker-compose up
+```
+
+## Test on Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e34aee6688c0937c6643)
 
 ## Documentation / Specifications
 
