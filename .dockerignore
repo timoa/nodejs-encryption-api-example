@@ -8,4 +8,10 @@ README.md
 docker-compose.yml
 **/node_modules
 **/npm-debug.log
+
+# Ignore .DS_Store Mac file
+.DS_Store
+# SonarQube Lint
+.sonarlint
+# MongoDB volume folder
 data
