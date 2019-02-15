@@ -1,14 +1,18 @@
-version: '2'
+version: '3.3'
 
 services:
   api:
     image: timoa/nodejs-encryption-api-example:latest
     environment:
       - NODE_ENV=production
+      - MONGO_HOST=mongo
+      - WAIT_HOSTS=mongo:27017
     ports:
       - 3000:3000
     restart: always
     links:
+      - mongo
+    depends_on:
       - mongo
   mongo:
     container_name: mongo
@@ -17,3 +21,8 @@ services:
       - ./data:/data/db
     ports:
       - 27017:27017
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:27017"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
