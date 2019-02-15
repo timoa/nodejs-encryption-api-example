@@ -32,11 +32,23 @@ exports.addSecret = async (req) => {
     const encryptedSecret = crypto.encrypt(unencryptedSecret, req.body.encryption_key);
 
     // Save the encrypted Secret under MongoDB
-    const secret = new Secret({
+    const data = {
       id: req.body.id,
       value: encryptedSecret,
-    });
-    return secret.save();
+    };
+
+    // Save data
+    return Secret.findOneAndUpdate(
+      {
+        id: req.body.id,
+      },
+      data,
+      {
+        upsert: true,
+        new: true,
+        runValidators: true,
+      },
+    );
   } catch (err) {
     throw boom.boomify(err);
   }
