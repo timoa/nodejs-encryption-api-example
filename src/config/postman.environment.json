@@ -1,0 +1,34 @@
+{
+	"id": "ea8a2f5e-c53e-4be1-ac05-97bf15d4fe88",
+	"name": "Encryption API",
+	"values": [
+		{
+			"key": "server",
+			"value": "http:///localhost",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "port",
+			"value": "3000",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "id",
+			"value": "test-01",
+			"type": "text",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "encryptionKey",
+			"value": "p2s5v8y/B?E(H+MbQeShVmYq3t6w9z$C",
+			"description": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-02-15T16:53:17.865Z",
+	"_postman_exported_using": "Postman/6.7.3"
+}
