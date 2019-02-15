@@ -49,6 +49,12 @@ docker-compose up
 
 ## Test on Postman
 
+### Download and Import the Postman environment
+
+[Download Postman Environment](https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json)
+
+### Run the Postman collection
+
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e34aee6688c0937c6643)
 
 ## Documentation / Specifications
@@ -148,3 +154,4 @@ npm test
 
 [1]: http://localhost:3000/swagger
 [2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
+[3]: https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json
