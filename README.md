@@ -18,6 +18,7 @@ This project doesn't cover encryption in transit (SSL) and not meant to be use i
 - AES-256-CBC encryption that uses a random Initialization Vector (IV)
 - IV stored with the encrypted data (separate by a `:` character)
 - Dockerfile to generate the Docker image
+- Docker Compose file to launch the API and MongoDB official Docker images
 - Health check endpoint to check if the app is still alive
 - Logs with correlation ID
 - MongoDB as datastore (using Mongoose)
@@ -47,7 +48,7 @@ npm test
 
 ### Docker Compose
 
-Be sure that your not running MongoDB + another node.js app that uses the 3000 port
+Be sure that your not running MongoDB + another node.js app that uses the `3000` port
 
 ```bash
 docker-compose up
@@ -63,7 +64,7 @@ docker build -t timoa/nodejs-encryption-api-example .
 docker run -p 3000:3000 timoa/nodejs-encryption-api-example
 ```
 
-## Test on Postman
+## Test with Postman
 
 ### Download and Import the Postman environment
 
@@ -75,7 +76,7 @@ docker run -p 3000:3000 timoa/nodejs-encryption-api-example
 
 ## Documentation / Specifications
 
-You can access Swagger here:
+You can access to the documentation (Swagger) here:
 
 [http://localhost:3000/swagger][1]
 
@@ -88,6 +89,8 @@ You need to generate an encryption key that you will use to encrypt the data sav
 You can use this online website to create your key (256 bit):
 
 [https://www.allkeysgenerator.com][2]
+
+### Add secret
 
 Fill the following curl command with your key and value is your JSON data you want to encrypt.
 
@@ -122,7 +125,11 @@ Payload with the encryption key used in the example (will be different for you s
 
 Note that the IV is in the first part fo the encrypted data (`42d0f6eb0810caaaaf5bad7477ebfc44`)
 
-To get your data back thru a search by ID (`test-01` in this example), you can type this command:
+### Get secret(s)
+
+#### Get a specific ID
+
+You can do a search by ID (`test-01` in this example):
 
 ``` bash
 curl -X POST \
@@ -135,9 +142,9 @@ curl -X POST \
 }'
 ```
 
-This will return this payload (the data has been stringify):
+This will return an array with a unique result:
 
-``` bash
+``` json
 [
     {
         "id": "test-01",
@@ -152,11 +159,75 @@ This will return this payload (the data has been stringify):
 ]
 ```
 
+#### Get ID with a wildcard `*`
+
+You can also do a search by using a wildcard `*` at the end of your ID (`test-01-*` in this example):
+
+``` bash
+curl -X POST \
+  http://127.0.0.1:3000/api/secrets \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "id": "test-01-*",
+    "encryption_key": "p2s5v8y/B?E(H+MbQeShVmYq3t6w9z$C"
+}'
+```
+
+This will return an array of results:
+
+``` json
+[
+    {
+        "id": "test-01",
+        "value": {
+            "first_name": "firstname",
+            "last_name": "lastname",
+            "email": "email@email.com",
+            "password": "app123",
+            "password_confirmation": "app123"
+        }
+    },
+    {
+        "id": "test-01-01",
+        "value": {
+            "first_name": "firstname",
+            "last_name": "lastname",
+            "email": "email@email.com",
+            "password": "app123",
+            "password_confirmation": "app123"
+        }
+    },
+    {
+        "id": "test-01-02",
+        "value": {
+            "first_name": "firstname",
+            "last_name": "lastname",
+            "email": "email@email.com",
+            "password": "app123",
+            "password_confirmation": "app123"
+        }
+    },
+    {
+        "id": "test-01-03",
+        "value": {
+            "first_name": "firstname",
+            "last_name": "lastname",
+            "email": "email@email.com",
+            "password": "app123",
+            "password_confirmation": "app123"
+        }
+    }
+]
+```
+
 ## TODO
 
+- Return an empty array if bad encryption key instead of error
 - Swagger detailled schema
 - Fix issue with Docker login to push the Docker image with Travis
 - PM2 support under the Docker container (to restart the app in case of failure)
+- SonarCloud support (SonarQube) for the code analysis
 
 [1]: http://localhost:3000/swagger
 [2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
