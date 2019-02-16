@@ -1,21 +1,25 @@
 language: node_js
-
 node_js:
-  - node
-
+- node
 services:
-  - docker
-
+- docker
 before_install:
-  - docker build -t timoa/nodejs-encryption-api-example .
-  - docker-compose up -d
-  - docker ps -a
-
+- docker build -t timoa/nodejs-encryption-api-example .
+- docker-compose up -d
+- docker ps -a
 script:
-    - npm test
-    - docker-compose down
-
+- npm test
+- docker-compose down
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
 notifications:
   email:
     on_success: never
     on_failure: always
+env:
+  matrix:
+  - secure: rQ2x0C2HOZI3Z2XAuM9DyjEiPbk57s9+f8xP4d+zS0rdU6QIoLu+iWSauQ5m9jvEUAuzPEFTu1GK6i8ZXuabuQo4yOqWayq/SEVBMg+MUhLC6fbvGMaOHx2PGQZVJvLOSzoGc7jJ4Mf8k20IhnK5Zc/nYGnL5raRGtszZ+rLzDlGr7sqVQ49E3jcTMtoxIo+irNKxOJO+9Z/BH3m88wjInUCWVR4LqRxqin4CfFWgaLRbe7Zy9jkYGLheOYDInV0Y/BROFzS1Q/1GTai2nvwAD9+P9qHNaz5RwQQdmPBbReJIvRmki1HB40UAabGBhXL8rpjwdiMvxWUUE4d87iSjM5OZfg59Rf0OhwMU4ckfQuH8Y3fmt6Sk8PTjUND+7AyHLxniUabaweHdw0NNcLTNfZSJL4SBDg6BTsCjPG8sY64LXKDWyIYzo+b7t53tc1RqNd+J5TaCDyOJPbrSqyFchoNAJmkKJsNzA0aHra1+poEvQRCulGnfh4jepDIfF5YbZ5FILnResofIXCIgOk+xrzpI89R2gEFkw8LjiM2M1n7k7v2LHI4P0Rbq+v4MLI5+3vr83pgj7dlLNg3HSfGwiKXVzEgHV2gpb7pBiVmEY36h17Yo6pm7SHlXDe3YX6YObcNAkQCHgMnZo6f8oVj9hMPm5DR99HXD27Cd80isDU=
+  - secure: q5UZoltjuycDxAN6I3AiNVb+VPGrn/UeytKaRA8FcifwErPrSboxUxbP4Lct7sBOge8fMMY0fAcV8IplqRLjnYKJqg6HKKTqYGZhSoVOv3bv1dX/UANBfw5YMTy8TN67+w89VwJ+L73p6btRxuR8FWWl2tydq+lI9Pklr2m+wiBaaIhxQZDmdZdAvvPzTD4fKw+oVsTr0akT4j4p+Br2FxeygJ0kLifkG0yZkwq6NwEWzNQqucnTmyA+pPLP9igKVKKHjl08rGh8bRyrwTKIJ7fQZJpQQTBiePzClxSZ6WW4j4YKVmgZywOJ3az5ohxKkLJLXKRaDzAIoBD+2Yh+kZnFGsVv5pw/SCzFrbAA+Tx3MhkHsgq0iDdhYusKUaNlgbnvOj3BP9eTOIJEi0m76f2iE8mHwnf9JEpKP8YP+tvyUB8iwreAeub+Ur0c735f4anC1mJnoIxEj4fv8VmLSG2P91yj94urRVplbr2d30poC5CWGtkrJrF4vqDpDS//BGS3wz8lnR54mSPf+J+IgzI3XpkKLEEMP2Et4w9OgYSZL5lh1XfcqHTy1h6I0D0YcOi6NHz8ClAnd3GgmRVJCG+Fr6N0dd50HaayCgt7XwuiPMX+RAo5WLj6PrYqkXW48OQ7mGgffHVpW8yvNkMCL3EopJEB+BARXXkS6GqUko8=
