@@ -37,6 +37,12 @@ node install
 npm start
 ```
 
+### Tests
+
+``` bash
+npm test
+```
+
 ## Docker
 
 ### Docker Compose
@@ -45,6 +51,16 @@ Be sure that your not running MongoDB + another node.js app that uses the 3000 p
 
 ```bash
 docker-compose up
+```
+
+### Build & Run custom container
+
+```bash
+docker build -t timoa/nodejs-encryption-api-example .
+```
+
+```bash
+docker run -p 3000:3000 timoa/nodejs-encryption-api-example
 ```
 
 ## Test on Postman
@@ -71,7 +87,7 @@ You need to generate an encryption key that you will use to encrypt the data sav
 
 You can use this online website to create your key (256 bit):
 
-[www.allkeysgenerator.com][2]
+[https://www.allkeysgenerator.com][2]
 
 Fill the following curl command with your key and value is your JSON data you want to encrypt.
 
@@ -136,21 +152,11 @@ This will return this payload (the data has been stringify):
 ]
 ```
 
-## Tests
-
-``` bash
-npm test
-```
-
 ## TODO
 
-- ~~Create the http server~~
-- ~~Create the Dockerfile~~
-- ~~Crypto library~~
-- ~~API storing endpoint~~
-- ~~API retrieval endpoint~~
-- Swagger detailled schema (WIP)
-- PM2 support for the Docker container (to restart the app in case of failure)
+- Swagger detailled schema
+- Fix issue with Docker login to push the Docker image with Travis
+- PM2 support under the Docker container (to restart the app in case of failure)
 
 [1]: http://localhost:3000/swagger
 [2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
