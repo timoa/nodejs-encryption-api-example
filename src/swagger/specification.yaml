@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  description: "Encryption API specification"
+  version: "1.0.0"
+  title: "Test Swagger specification"
+  contact:
+    email: "d.laureaux@timoa.com"
+servers:
+  - url: http://localhost:3000/
+    description: Localhost (uses test data)
+paths:
+  /_health:
+    get:
+      description: Heath check route, so we can check if server is alive
+      tags:
+        - Status
+      responses:
+        200:
+          description: 'Server is alive'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                     type: number
+                  status:
+                     type: string
+                example:
+                 statusCode: 200 
+                 status: "ok"

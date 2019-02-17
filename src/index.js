@@ -16,7 +16,7 @@ fastify.register(require('fastify-healthcheck'), {
 });
 
 // Import Swagger Options
-const swagger = require('./config/swagger');
+const swagger = require('./swagger/options');
 
 // Register the Swagger plugin
 fastify.register(require('fastify-swagger'), swagger.options);
