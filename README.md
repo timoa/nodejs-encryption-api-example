@@ -6,7 +6,7 @@ Example of encrypting/decrypting data thru an API using node.js.
 
 The idea with this example is to test how to store encrypted data under a datastore (ex. MongoDB) and keep control of your data by providing the encryption key for each call.
 
-This project doesn't cover encryption in transit (SSL) and not meant to be use in production.
+This project doesn't cover encryption in transit (SSL) and not meant to be used in production.
 
 ## Requirements
 
@@ -16,12 +16,12 @@ This project doesn't cover encryption in transit (SSL) and not meant to be use i
 ## Includes
 
 - AES-256-CBC encryption that uses a random Initialization Vector (IV)
-- IV stored with the encrypted data (separate by a `:` character)
+- IV stored with the encrypted data (separated by a `:` character)
 - Dockerfile to generate the Docker image
 - Docker Compose file to launch the API and MongoDB official Docker images
 - Health check endpoint to check if the app is still alive
 - Logs with correlation ID
-- MongoDB as datastore (using Mongoose)
+- MongoDB as data store (using Mongoose)
 - Swagger support for API specifications/documentation
 
 ## Run locally
@@ -48,23 +48,17 @@ npm test
 
 ### Docker Compose
 
-Be sure that your not running MongoDB + another node.js app that uses the `3000` port
+Be sure that you are not running MongoDB + another node.js app that uses the `3000` port
 
 ```bash
 docker-compose up
 ```
 
-### Build & Run custom container
-
-```bash
-docker build -t timoa/nodejs-encryption-api-example .
-```
-
-```bash
-docker run -p 3000:3000 timoa/nodejs-encryption-api-example
-```
-
 ## Test with Postman
+
+First, you need to import the Postman environment.
+
+There is a default encryption key and ID to have a quick look to the API.
 
 ### Download and Import the Postman environment
 
@@ -80,7 +74,7 @@ You can access to the documentation (Swagger) here:
 
 [http://localhost:3000/swagger][1]
 
-## How to use it
+## How it works
 
 ### Generate an Encryption key (256 bit / 32 chars length)
 
@@ -92,7 +86,7 @@ You can use this online website to create your key (256 bit):
 
 ### Add secret
 
-Fill the following curl command with your key and value is your JSON data you want to encrypt.
+Fill the following curl command with your key and value is the JSON data you want to encrypt.
 
 ``` bash
 curl -X POST \
@@ -224,8 +218,7 @@ This will return an array of results:
 ## TODO
 
 - Return an empty array if bad encryption key instead of error
-- Swagger detailled schema
-- Fix issue with Docker login to push the Docker image with Travis
+- Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of failure)
 - SonarCloud support (SonarQube) for the code analysis
 
