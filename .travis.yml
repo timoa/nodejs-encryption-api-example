@@ -15,7 +15,7 @@ deploy:
   provider: script
   script: bash docker_push
   on:
-    branch: master
+    branch: feature/fix-docker-hub-login
 notifications:
   email:
     on_success: never
