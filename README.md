@@ -13,16 +13,17 @@ This project doesn't cover encryption in transit (SSL) and not meant to be used 
 - API storing endpoint: encrypt data with the provided key and store it into a MongoDB collection with AES-256-CBC encryption
 - API retrieval endpoint: decrypt data with the provided key and return the data
 
-## Includes
+## Features
 
 - AES-256-CBC encryption that uses a random Initialization Vector (IV)
 - IV stored with the encrypted data (separated by a `:` character)
-- Dockerfile to generate the Docker image
-- Docker Compose file to launch the API and MongoDB official Docker images
-- Health check endpoint to check if the app is still alive
 - Logs with correlation ID
 - MongoDB as data store (using Mongoose)
 - Swagger support for API specifications/documentation
+- Health check endpoint to check if the app is still alive
+- Dockerfile to generate the Docker image
+- Docker Compose file to launch the API and MongoDB official Docker images
+- Build, test and deploy to Docker Hub with Travis CI
 
 ## Run locally
 
@@ -219,9 +220,11 @@ This will return an array of results:
 
 - Return an empty array if bad encryption key instead of error
 - Swagger detailed schema
-- PM2 support under the Docker container (to restart the app in case of failure)
-- SonarCloud support (SonarQube) for the code analysis
+- PM2 support under the Docker container (to restart the app in case of crash)
+- Add testing code coverage support using C8 for example
+- [SonarCloud][4] support (SonarQube) for the code analysis
 
 [1]: http://localhost:3000/swagger
 [2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
 [3]: https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json
+[4]: https://sonarcloud.io/about
