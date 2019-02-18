@@ -11,6 +11,8 @@ const port = process.env.MONGO_PORT || 27017;
 function connect() {
   mongoose.connect(`mongodb://${host}:${port}/${config.app.name}`, {
     useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   })
     .then(() => logger.info('MongoDB connected'))
     .catch(err => logger.error(err));
