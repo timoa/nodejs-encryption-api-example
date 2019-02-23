@@ -1,6 +1,14 @@
 # Encryption API endpoints with Node.js
 
 [![Build Status](https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master)](https://travis-ci.org/timoa/nodejs-encryption-api-example)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=security_rating)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=bugs)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
 
 Example of encrypting/decrypting data thru an API using node.js.
 
@@ -222,7 +230,6 @@ This will return an array of results:
 - Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of crash)
 - Add testing code coverage support using C8 for example
-- [SonarCloud][4] support (SonarQube) for the code analysis
 
 [1]: http://localhost:3000/swagger
 [2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
