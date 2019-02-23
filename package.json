@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index",
     "pretest": "eslint ./src",
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --reporter spec",
     "docker:status": "node src/healthcheck"
   },
   "repository": {
@@ -60,6 +60,7 @@
     "eslint-plugin-react": "^7.11.1",
     "espree": "^4.1.0",
     "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
     "request": "^2.88.0"
   }
 }
