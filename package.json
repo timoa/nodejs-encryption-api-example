@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index",
     "pretest": "eslint ./src",
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "coverage": "./node_modules/.bin/nyc npm test",
     "docker:status": "node src/healthcheck"
   },
   "repository": {
@@ -65,8 +66,23 @@
   },
   "nyc": {
     "check-coverage": true,
+    "lines": 0,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "include": [
+      "src/*.js",
+      "src/**/*.js"
+    ],
     "exclude": [
-      "src/healthcheck.js"
-    ]
+      "test/*.spec.js",
+      "coverage/**",
+      "src/swagger/*.js"
+    ],
+    "all": true
   }
 }
