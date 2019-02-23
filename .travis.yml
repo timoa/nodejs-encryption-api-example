@@ -7,12 +7,13 @@ addons:
   sonarcloud:
     organization: timoa-github
 before_script:
-- bash scripts/sonar_scanner.sh
 - docker build -t timoa/nodejs-encryption-api-example .
 - docker-compose up -d
 - docker ps -a
 script:
 - npm test
+- npm run coverage
+- bash scripts/sonar_scanner.sh
 after_script:
 - docker-compose down
 deploy:

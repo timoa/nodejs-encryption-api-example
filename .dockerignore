@@ -15,3 +15,6 @@ docker-compose.yml
 .sonarlint
 # MongoDB volume folder
 data
+# Test coverage
+coverage
+.nyc_output
