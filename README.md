@@ -1,6 +1,7 @@
 # Encryption API endpoints with Node.js
 
 [![Build Status](https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master)](https://travis-ci.org/timoa/nodejs-encryption-api-example)
+![Docker Pulls](https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=security_rating)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
@@ -51,6 +52,12 @@ npm start
 
 ``` bash
 npm test
+```
+
+### Tests coverage
+
+``` bash
+npm run coverage
 ```
 
 ## Docker
@@ -229,7 +236,6 @@ This will return an array of results:
 - Return an empty array if bad encryption key instead of error
 - Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of crash)
-- Add testing code coverage support using C8 for example
 
 [1]: http://localhost:3000/swagger
 [2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
