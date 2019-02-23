@@ -62,5 +62,11 @@
     "mocha": "^5.2.0",
     "nyc": "^13.3.0",
     "request": "^2.88.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "exclude": [
+      "src/healthcheck.js"
+    ]
   }
 }
