@@ -81,7 +81,8 @@
     "exclude": [
       "test/*.spec.js",
       "coverage/**",
-      "src/swagger/*.js"
+      "src/swagger/*.js",
+      "data/**/*"
     ],
     "all": true
   }
