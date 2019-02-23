@@ -11,7 +11,6 @@ before_script:
 - docker-compose up -d
 - docker ps -a
 script:
-- npm test
 - npm run coverage
 - bash scripts/sonar_scanner.sh
 after_script:
