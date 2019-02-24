@@ -66,6 +66,12 @@ npm run test:coverage
 npm run test:functional
 ```
 
+### Run all the tests
+
+``` bash
+npm run test:all
+```
+
 ## Docker
 
 ### Docker Compose
