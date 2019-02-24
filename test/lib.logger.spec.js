@@ -11,14 +11,6 @@ describe('Logger library', () => {
     expect(logger.info).to.not.throw();
     done();
   });
-  it('expect the "logger.debug" function to be a function', (done) => {
-    expect(typeof (logger.debug)).to.be.equals('function');
-    done();
-  });
-  it('expect the "logger.debug" function to not throw without an argument', (done) => {
-    expect(logger.debug).to.not.throw();
-    done();
-  });
   it('expect the "logger.warn" function to be a function', (done) => {
     expect(typeof (logger.warn)).to.be.equals('function');
     done();
@@ -33,6 +25,14 @@ describe('Logger library', () => {
   });
   it('expect the "logger.error" function to not throw without an argument', (done) => {
     expect(logger.error).to.not.throw();
+    done();
+  });
+  it('expect the "logger.log" function to be a function', (done) => {
+    expect(typeof (logger.log)).to.be.equals('function');
+    done();
+  });
+  it('expect the "logger.log" function to throw without an argument', (done) => {
+    expect(logger.log).to.throw();
     done();
   });
 });
