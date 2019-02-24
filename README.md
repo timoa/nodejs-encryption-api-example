@@ -57,7 +57,13 @@ npm test
 ### Tests coverage
 
 ``` bash
-npm run coverage
+npm run test:coverage
+```
+
+### Functional tests
+
+``` bash
+npm run test:functional
 ```
 
 ## Docker

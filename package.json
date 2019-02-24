@@ -8,7 +8,7 @@
     "pretest": "eslint ./src",
     "test": "./node_modules/.bin/mocha --reporter spec",
     "test:functional": "./node_modules/.bin/mocha --reporter spec ./test/functional",
-    "coverage": "./node_modules/.bin/nyc npm test",
+    "test:coverage": "./node_modules/.bin/nyc npm test",
     "docker:status": "node src/healthcheck"
   },
   "repository": {
