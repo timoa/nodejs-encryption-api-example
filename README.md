@@ -1,15 +1,15 @@
 # Encryption API endpoints with Node.js
 
-[![Build Status](https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master)](https://travis-ci.org/timoa/nodejs-encryption-api-example)
-![Docker Pulls](https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=security_rating)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Build Status][travis-badge]][travis-url]
+[![Docker Pulls][docker-badge]][docker-url]
+[![Quality Gate Status][sonarcloud-status-badge]][sonarcloud-url]
+[![Security Rating][sonarcloud-security-badge]][sonarcloud-url]
+[![Maintainability Rating][sonarcloud-maintainability-badge]][sonarcloud-url]
 
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=bugs)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example)
+[![Bugs][sonarcloud-bugs-badge]][sonarcloud-url]
+[![Code Smells][sonarcloud-codesmells-badge]][sonarcloud-url]
+[![Coverage][sonarcloud-coverage-badge]][sonarcloud-url]
+[![Duplicated Lines (%)][sonarcloud-duplicated-badge]][sonarcloud-url]
 
 Example of encrypting/decrypting data thru an API using node.js.
 
@@ -33,6 +33,8 @@ This project doesn't cover encryption in transit (SSL) and not meant to be used 
 - Dockerfile to generate the Docker image
 - Docker Compose file to launch the API and MongoDB official Docker images
 - Build, test and deploy to Docker Hub with Travis CI
+- SonarQube code quality check (SonarCloud)
+- Unit tests and functional tests
 
 ## Run locally
 
@@ -90,17 +92,17 @@ There is a default encryption key and ID to have a quick look to the API.
 
 ### Download and Import the Postman environment
 
-[Download Postman Environment](https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json)
+Download the [Postman Environment][postman-environment]
 
 ### Run the Postman collection
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e34aee6688c0937c6643)
+[![Run in Postman][postman-run-button]][postman-run-url]
 
 ## Documentation / Specifications
 
 You can access to the documentation (Swagger) here:
 
-[http://localhost:3000/swagger][1]
+[http://localhost:3000/swagger][swagger]
 
 ## How it works
 
@@ -110,7 +112,7 @@ You need to generate an encryption key that you will use to encrypt the data sav
 
 You can use this online website to create your key (256 bit):
 
-[https://www.allkeysgenerator.com][2]
+[https://www.allkeysgenerator.com][allkeysgenerator]
 
 ### Add secret
 
@@ -249,7 +251,21 @@ This will return an array of results:
 - Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of crash)
 
-[1]: http://localhost:3000/swagger
-[2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
-[3]: https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json
-[4]: https://sonarcloud.io/about
+[swagger]: http://localhost:3000/swagger
+[allkeysgenerator]: https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
+[postman-environment]: https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json
+[postman-run-button]: https://run.pstmn.io/button.svg
+[postman-run-url]: https://app.getpostman.com/run-collection/e34aee6688c0937c6643
+[sonarcloud]: https://sonarcloud.io/about
+[travis-badge]: https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master
+[travis-url]: https://travis-ci.org/timoa/nodejs-encryption-api-example
+[docker-badge]: https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg
+[docker-url]: https://hub.docker.com/r/timoa/nodejs-encryption-api-example
+[sonarcloud-url]: https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example
+[sonarcloud-status-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=alert_status
+[sonarcloud-security-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=security_rating
+[sonarcloud-maintainability-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=sqale_rating
+[sonarcloud-bugs-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=bugs
+[sonarcloud-codesmells-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells
+[sonarcloud-coverage-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage
+[sonarcloud-duplicated-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density
