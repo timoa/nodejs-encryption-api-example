@@ -18,4 +18,8 @@ function connect() {
     .catch(err => logger.error(err));
 }
 
-module.exports = { connect };
+function close() {
+  mongoose.connection.close();
+}
+
+module.exports = { connect, close };
