@@ -1,0 +1,12 @@
+{
+  "id": "test-01",
+  "encryptionKey": "p2s5v8y/B?E(H+MbQeShVmYq3t6w9z$C",
+  "secret": {
+    "first_name": "firstname",
+    "last_name": "lastname",
+    "email": "email@email.com",
+    "password": "app123",
+    "password_confirmation": "app123"
+  },
+  "encryptedSecret": "8b207a4408fec28e4d985b80c66a0e74:b5245d5149a6cba15ee6f597a3b1fc5fcaca4ccdd7f8ed0865f0358002a74a90d17ee7ddb55bc295ae4a6e71ff13d86466790641cc61cbe728bb4014e3acd0ceef654ca7f14bd4e2875a0158c1ca669b8fee1ebbf9a47cbdfe1668568c4d295fdc00b4fb07196452c05ae465a11146738cf9a9e9827b8ab75a817e94780a759e56ccb5b26ac2a79716d0ec3a0784ad6b"
+}
