@@ -1,6 +1,6 @@
 const request = require('request');
 const { expect } = require('chai');
-const config = require('../src/config/config.json');
+const config = require('../../src/config/config.json');
 
 // Server
 describe('Root endpoint response', () => {
