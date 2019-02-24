@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const { expect } = require('chai');
 const crypto = require('../src/lib/crypto');
 const testData = require('./testData.json');
@@ -13,7 +14,6 @@ describe('Crypto library', () => {
     done();
   });
   it('expect the "decrypt" function to return the same object as original data', (done) => {
-    // eslint-disable-next-line max-len
     expect(JSON.parse(crypto.decrypt(testData.encryptedSecret, testData.encryptionKey))).to.deep.equals(testData.secret);
     done();
   });
