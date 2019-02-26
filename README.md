@@ -21,12 +21,12 @@ The idea with this example is to test how to store encrypted data under a datast
 
 ## Features
 
-- API storing endpoint that encrypts data with the provided key and store it into a MongoDB collection (AES-256-CBC encryption)
-- API retrieval endpoint that decrypts data with the provided key and return the data
+- API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-CBC encryption)
+- API retrieval endpoint that decrypts data with the provided key and returns the data
 - AES-256-CBC encryption that uses a random Initialization Vector (IV)
 - IV stored with the encrypted data (separated by a `:` character)
 - Logs with correlation ID
-- MongoDB as data store (using Mongoose)
+- MongoDB as a data store (using Mongoose)
 - Swagger support for API specifications/documentation (WIP)
 - Health check endpoint to check if the app is still alive
 - Dockerfile to generate the Docker image
@@ -100,7 +100,7 @@ Download the [Postman Environment][postman-environment]
 
 ## Documentation / Specifications
 
-You can access to the documentation (Swagger) here:
+You can access the documentation (Swagger) here:
 
 [http://localhost:3000/swagger][swagger]
 
@@ -153,7 +153,7 @@ Note that the IV is in the first part fo the encrypted data (`42d0f6eb0810caaaaf
 
 #### Get a specific ID
 
-You can do a search by ID (`test-01` in this example):
+You can search by ID (`test-01` in this example):
 
 ``` bash
 curl -X POST \
@@ -185,7 +185,7 @@ This will return an array with a unique result:
 
 #### Get ID with a wildcard `*`
 
-You can also do a search by using a wildcard `*` at the end of your ID (`test-01-*` in this example):
+You can also search by using a wildcard `*` at the end of your ID (`test-01-*` in this example):
 
 ``` bash
 curl -X POST \
@@ -237,9 +237,10 @@ This will return an array of results:
 
 ## TODO
 
-- Return an empty array if bad encryption key instead of error
+- Return an empty array if wrong encryption key instead of error
 - Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of crash)
+- Move from Travis-CI to CircleCI by support to the [#TravisAlumns][travis-alumns]
 
 [swagger]: http://localhost:3000/swagger
 [allkeysgenerator]: https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
@@ -259,3 +260,4 @@ This will return an array of results:
 [sonarcloud-codesmells-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells
 [sonarcloud-coverage-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage
 [sonarcloud-duplicated-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density
+[travis-alumns]: https://twitter.com/ReinH/status/1098663375985229825
