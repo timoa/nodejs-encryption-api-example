@@ -11,30 +11,30 @@
 [![Coverage][sonarcloud-coverage-badge]][sonarcloud-url]
 [![Duplicated Lines (%)][sonarcloud-duplicated-badge]][sonarcloud-url]
 
+## Introduction
+
 Example of encrypting/decrypting data thru an API using node.js.
 
 The idea with this example is to test how to store encrypted data under a datastore (ex. MongoDB) and keep control of your data by providing the encryption key for each call.
 
-This project doesn't cover encryption in transit (SSL) and not meant to be used in production.
-
-## Requirements
-
-- API storing endpoint: encrypt data with the provided key and store it into a MongoDB collection with AES-256-CBC encryption
-- API retrieval endpoint: decrypt data with the provided key and return the data
+> This project doesn't cover encryption in transit (SSL) and not meant to be used in production.
 
 ## Features
 
+- API storing endpoint that encrypts data with the provided key and store it into a MongoDB collection (AES-256-CBC encryption)
+- API retrieval endpoint that decrypts data with the provided key and return the data
 - AES-256-CBC encryption that uses a random Initialization Vector (IV)
 - IV stored with the encrypted data (separated by a `:` character)
 - Logs with correlation ID
 - MongoDB as data store (using Mongoose)
-- Swagger support for API specifications/documentation
+- Swagger support for API specifications/documentation (WIP)
 - Health check endpoint to check if the app is still alive
 - Dockerfile to generate the Docker image
 - Docker Compose file to launch the API and MongoDB official Docker images
 - Build, test and deploy to Docker Hub with Travis CI
 - SonarQube code quality check (SonarCloud)
 - Unit tests and functional tests
+- Postman collection and environment
 
 ## Run locally
 
@@ -78,7 +78,7 @@ npm run test:all
 
 ### Docker Compose
 
-Be sure that you are not running MongoDB + another node.js app that uses the `3000` port
+> Be sure that you are not running MongoDB + another node.js app that uses the `3000` port
 
 ```bash
 docker-compose up
@@ -202,16 +202,6 @@ This will return an array of results:
 
 ``` json
 [
-    {
-        "id": "test-01",
-        "value": {
-            "first_name": "firstname",
-            "last_name": "lastname",
-            "email": "email@email.com",
-            "password": "app123",
-            "password_confirmation": "app123"
-        }
-    },
     {
         "id": "test-01-01",
         "value": {
