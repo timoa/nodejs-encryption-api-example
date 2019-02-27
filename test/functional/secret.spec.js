@@ -1,18 +1,7 @@
 const request = require('request');
 const { expect } = require('chai');
-const config = require('../src/config/config.json');
-
-// Configuration
-const id = 'test-01';
-const encryptionKey = 'p2s5v8y/B?E(H+MbQeShVmYq3t6w9z$C';
-const secret = {
-  first_name: 'firstname',
-  last_name: 'lastname',
-  email: 'email@email.com',
-  password: 'app123',
-  password_confirmation: 'app123',
-};
-
+const config = require('../../src/config/config.json');
+const testData = require('../testData.json');
 
 // Add Secret
 describe('Add Secret endpoint response', () => {
@@ -25,9 +14,9 @@ describe('Add Secret endpoint response', () => {
         'Content-Type': 'application/json',
       },
       body: {
-        id,
-        encryption_key: encryptionKey,
-        value: secret,
+        id: testData.id,
+        encryption_key: testData.encryptionKey,
+        value: testData.secret,
       },
       json: true,
     };
@@ -51,8 +40,8 @@ describe('Get Secret(s) endpoint response', () => {
         'Content-Type': 'application/json',
       },
       body: {
-        id,
-        encryption_key: encryptionKey,
+        id: testData.id,
+        encryption_key: testData.encryptionKey,
       },
       json: true,
     };

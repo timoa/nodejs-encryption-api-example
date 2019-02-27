@@ -1,29 +1,40 @@
 # Encryption API endpoints with Node.js
 
-[![Build Status](https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master)](https://travis-ci.org/timoa/nodejs-encryption-api-example)
+[![Build Status][travis-badge]][travis-url]
+[![Docker Pulls][docker-badge]][docker-url]
+[![Quality Gate Status][sonarcloud-status-badge]][sonarcloud-url]
+[![Security Rating][sonarcloud-security-badge]][sonarcloud-url]
+[![Maintainability Rating][sonarcloud-maintainability-badge]][sonarcloud-url]
+
+[![Bugs][sonarcloud-bugs-badge]][sonarcloud-url]
+[![Code Smells][sonarcloud-codesmells-badge]][sonarcloud-url]
+[![Coverage][sonarcloud-coverage-badge]][sonarcloud-url]
+[![Duplicated Lines (%)][sonarcloud-duplicated-badge]][sonarcloud-url]
+
+## Introduction
 
 Example of encrypting/decrypting data thru an API using node.js.
 
 The idea with this example is to test how to store encrypted data under a datastore (ex. MongoDB) and keep control of your data by providing the encryption key for each call.
 
-This project doesn't cover encryption in transit (SSL) and not meant to be used in production.
-
-## Requirements
-
-- API storing endpoint: encrypt data with the provided key and store it into a MongoDB collection with AES-256-CBC encryption
-- API retrieval endpoint: decrypt data with the provided key and return the data
+> This project doesn't cover encryption in transit (SSL) and not meant to be used in production.
 
 ## Features
 
+- API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-CBC encryption)
+- API retrieval endpoint that decrypts data with the provided key and returns the data
 - AES-256-CBC encryption that uses a random Initialization Vector (IV)
 - IV stored with the encrypted data (separated by a `:` character)
 - Logs with correlation ID
-- MongoDB as data store (using Mongoose)
-- Swagger support for API specifications/documentation
+- MongoDB as a data store (using Mongoose)
+- Swagger support for API specifications/documentation (WIP)
 - Health check endpoint to check if the app is still alive
 - Dockerfile to generate the Docker image
 - Docker Compose file to launch the API and MongoDB official Docker images
 - Build, test and deploy to Docker Hub with Travis CI
+- SonarQube code quality check (SonarCloud)
+- Unit tests and functional tests
+- Postman collection and environment
 
 ## Run locally
 
@@ -45,11 +56,29 @@ npm start
 npm test
 ```
 
+### Tests coverage
+
+``` bash
+npm run test:coverage
+```
+
+### Functional tests
+
+``` bash
+npm run test:functional
+```
+
+### Run all the tests
+
+``` bash
+npm run test:all
+```
+
 ## Docker
 
 ### Docker Compose
 
-Be sure that you are not running MongoDB + another node.js app that uses the `3000` port
+> Be sure that you are not running MongoDB + another node.js app that uses the `3000` port
 
 ```bash
 docker-compose up
@@ -63,17 +92,17 @@ There is a default encryption key and ID to have a quick look to the API.
 
 ### Download and Import the Postman environment
 
-[Download Postman Environment](https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json)
+Download the [Postman Environment][postman-environment]
 
 ### Run the Postman collection
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e34aee6688c0937c6643)
+[![Run in Postman][postman-run-button]][postman-run-url]
 
 ## Documentation / Specifications
 
-You can access to the documentation (Swagger) here:
+You can access the documentation (Swagger) here:
 
-[http://localhost:3000/swagger][1]
+[http://localhost:3000/swagger][swagger]
 
 ## How it works
 
@@ -83,7 +112,7 @@ You need to generate an encryption key that you will use to encrypt the data sav
 
 You can use this online website to create your key (256 bit):
 
-[https://www.allkeysgenerator.com][2]
+[https://www.allkeysgenerator.com][allkeysgenerator]
 
 ### Add secret
 
@@ -124,7 +153,7 @@ Note that the IV is in the first part fo the encrypted data (`42d0f6eb0810caaaaf
 
 #### Get a specific ID
 
-You can do a search by ID (`test-01` in this example):
+You can search by ID (`test-01` in this example):
 
 ``` bash
 curl -X POST \
@@ -156,7 +185,7 @@ This will return an array with a unique result:
 
 #### Get ID with a wildcard `*`
 
-You can also do a search by using a wildcard `*` at the end of your ID (`test-01-*` in this example):
+You can also search by using a wildcard `*` at the end of your ID (`test-01-*` in this example):
 
 ``` bash
 curl -X POST \
@@ -173,16 +202,6 @@ This will return an array of results:
 
 ``` json
 [
-    {
-        "id": "test-01",
-        "value": {
-            "first_name": "firstname",
-            "last_name": "lastname",
-            "email": "email@email.com",
-            "password": "app123",
-            "password_confirmation": "app123"
-        }
-    },
     {
         "id": "test-01-01",
         "value": {
@@ -218,13 +237,27 @@ This will return an array of results:
 
 ## TODO
 
-- Return an empty array if bad encryption key instead of error
+- Return an empty array if wrong encryption key instead of error
 - Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of crash)
-- Add testing code coverage support using C8 for example
-- [SonarCloud][4] support (SonarQube) for the code analysis
+- Move from Travis-CI to CircleCI by support to the [#TravisAlumns][travis-alumns]
 
-[1]: http://localhost:3000/swagger
-[2]: http://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
-[3]: https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json
-[4]: https://sonarcloud.io/about
+[swagger]: http://localhost:3000/swagger
+[allkeysgenerator]: https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
+[postman-environment]: https://raw.githubusercontent.com/timoa/nodejs-encryption-api-example/master/src/config/postman.environment.json
+[postman-run-button]: https://run.pstmn.io/button.svg
+[postman-run-url]: https://app.getpostman.com/run-collection/e34aee6688c0937c6643
+[sonarcloud]: https://sonarcloud.io/about
+[travis-badge]: https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master
+[travis-url]: https://travis-ci.org/timoa/nodejs-encryption-api-example
+[docker-badge]: https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg
+[docker-url]: https://hub.docker.com/r/timoa/nodejs-encryption-api-example
+[sonarcloud-url]: https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example
+[sonarcloud-status-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=alert_status
+[sonarcloud-security-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=security_rating
+[sonarcloud-maintainability-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=sqale_rating
+[sonarcloud-bugs-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=bugs
+[sonarcloud-codesmells-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells
+[sonarcloud-coverage-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage
+[sonarcloud-duplicated-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density
+[travis-alumns]: https://twitter.com/ReinH/status/1098663375985229825
