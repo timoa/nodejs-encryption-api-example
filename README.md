@@ -248,8 +248,8 @@ This will return an array of results:
 [postman-run-button]: https://run.pstmn.io/button.svg
 [postman-run-url]: https://app.getpostman.com/run-collection/e34aee6688c0937c6643
 [sonarcloud]: https://sonarcloud.io/about
-[travis-badge]: https://travis-ci.org/timoa/nodejs-encryption-api-example.svg?branch=master
-[travis-url]: https://travis-ci.org/timoa/nodejs-encryption-api-example
+[travis-badge]: https://travis-ci.com/timoa/nodejs-encryption-api-example.svg?branch=master
+[travis-url]: https://travis-ci.com/timoa/nodejs-encryption-api-example
 [docker-badge]: https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg
 [docker-url]: https://hub.docker.com/r/timoa/nodejs-encryption-api-example
 [sonarcloud-url]: https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example
