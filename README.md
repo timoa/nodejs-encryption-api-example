@@ -1,6 +1,6 @@
 # Encryption API endpoints with Node.js
 
-[![Build Status][travis-badge]][travis-url]
+[![Build Status][github-badge]][github-url]
 [![Docker Pulls][docker-badge]][docker-url]
 [![Quality Gate Status][sonarcloud-status-badge]][sonarcloud-url]
 [![Security Rating][sonarcloud-security-badge]][sonarcloud-url]
@@ -240,7 +240,6 @@ This will return an array of results:
 - Return an empty array if wrong encryption key instead of error
 - Swagger detailed schema
 - PM2 support under the Docker container (to restart the app in case of crash)
-- Move from Travis-CI to CircleCI by support to the [#TravisAlumns][travis-alumns]
 
 [swagger]: http://localhost:3000/swagger
 [allkeysgenerator]: https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
@@ -248,8 +247,8 @@ This will return an array of results:
 [postman-run-button]: https://run.pstmn.io/button.svg
 [postman-run-url]: https://app.getpostman.com/run-collection/e34aee6688c0937c6643
 [sonarcloud]: https://sonarcloud.io/about
-[travis-badge]: https://travis-ci.com/timoa/nodejs-encryption-api-example.svg?branch=master
-[travis-url]: https://travis-ci.com/timoa/nodejs-encryption-api-example
+[github-badge]: https://github.com/timoa/nodejs-encryption-api-example/workflows/Build/badge.svg
+[github-url]: https://github.com/timoa/nodejs-encryption-api-example/actions?query=workflow%3ABuild
 [docker-badge]: https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg
 [docker-url]: https://hub.docker.com/r/timoa/nodejs-encryption-api-example
 [sonarcloud-url]: https://sonarcloud.io/dashboard?id=timoa_nodejs-encryption-api-example
@@ -260,4 +259,3 @@ This will return an array of results:
 [sonarcloud-codesmells-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells
 [sonarcloud-coverage-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage
 [sonarcloud-duplicated-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density
-[travis-alumns]: https://twitter.com/ReinH/status/1098663375985229825
