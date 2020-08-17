@@ -41,7 +41,7 @@
     "fastify-healthcheck": "^1.0.0",
     "fastify-swagger": "^1.2.0",
     "http": "0.0.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "mongoose": "^5.7.5",
     "snyk": "^1.316.1",
     "uuid": "^3.3.2",
