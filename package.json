@@ -56,7 +56,7 @@
     "darwin"
   ],
   "devDependencies": {
-    "acorn": "6.4.1",
+    "acorn": "6.4.2",
     "acorn-jsx": "5.0.1",
     "chai": "4.2.0",
     "eslint": "6.6.0",
