@@ -27,5 +27,5 @@ paths:
                   status:
                      type: string
                 example:
-                 statusCode: 200 
+                 statusCode: 200
                  status: "ok"
