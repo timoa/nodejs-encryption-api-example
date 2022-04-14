@@ -25,9 +25,7 @@ function encrypt(data, encryptionKey) {
   encryptedSecret = Buffer.concat([encryptedSecret, cipher.final()]);
 
   // Embedded IV with the encrypted secret
-  const encryptedData = `${iv.toString('hex')}:${encryptedSecret.toString('hex')}`;
-
-  return encryptedData;
+  return `${iv.toString('hex')}:${encryptedSecret.toString('hex')}`;
 }
 
 /**
