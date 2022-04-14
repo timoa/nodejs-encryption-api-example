@@ -39,7 +39,7 @@
   "dependencies": {
     "boom": "7.3.0",
     "crypto": "1.0.1",
-    "fastify": "2.15.1",
+    "fastify": "2.15.3",
     "fastify-healthcheck": "1.0.0",
     "fastify-swagger": "4.0.0",
     "http": "0.0.0",
