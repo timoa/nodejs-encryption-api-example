@@ -47,7 +47,7 @@
     "mongoose": "5.12.3",
     "snyk": "1.518.0",
     "uuid": "3.3.2",
-    "winston": "3.2.1"
+    "winston": "3.3.0"
   },
   "engines": {
     "node": ">=12.0"
