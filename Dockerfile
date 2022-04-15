@@ -1,5 +1,4 @@
-ARG nodeVersion=12.16.1
-FROM node:${nodeVersion}-alpine
+FROM node:16.14.2-alpine3.15@sha256:28bed508446db2ee028d08e76fb47b935defa26a84986ca050d2596ea67fd506
 ARG appPort=3000
 # ARG microScannerToken
 
@@ -33,7 +32,8 @@ RUN \
 #   date
 
 WORKDIR /opt/app/
-COPY ./ /opt/app/
+COPY ./package.json ./
+COPY ./src ./src
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s \
       CMD npm run docker:status
