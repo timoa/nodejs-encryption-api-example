@@ -9,8 +9,9 @@ describe('DB Connect', () => {
   });
   it('expect "connect" to not throw', (done) => {
     expect(db.connect).to.not.throw();
-    db.close();
-    done();
+    db.close(() => {
+      done();
+    });
   });
 });
 
@@ -20,7 +21,8 @@ describe('DB Close', () => {
     done();
   });
   it('expect "close" to not throw', (done) => {
-    expect(db.close).to.not.throw();
-    done();
+    expect(() => {
+      done();
+    }).to.not.throw();
   });
 });
