@@ -1,10 +1,14 @@
 const crypto = require('crypto');
 
+const algorithm = 'AES-256-GCM';
+
+/**
+ * Generate an Initialization Vector
+ * @returns {Buffer}
+ */
 function generateIv() {
   return crypto.randomBytes(32);
 }
-
-const algorithm = 'AES-256-GCM';
 
 /**
  * Encrypt a secret
