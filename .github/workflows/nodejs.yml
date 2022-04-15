@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.7.0
+        uses: supercharge/mongodb-github-action@e815fd8a9dfede09fd6e6c144f2c9f4875e933df # tag=1.7.0
         with:
           mongodb-version: ${{ matrix.mongodb }}
           mongodb-db: encryptionAPI
