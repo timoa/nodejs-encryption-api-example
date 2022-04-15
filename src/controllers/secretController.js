@@ -1,4 +1,4 @@
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const _ = require('lodash');
 const Secret = require('../models/secret');
 const crypto = require('../lib/crypto');

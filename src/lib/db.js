@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const logger = require('../lib/logger');
+const logger = require('./logger');
 const config = require('../config/config.json');
 
 const host = process.env.MONGO_HOST || 'localhost';
@@ -13,13 +13,14 @@ function connect() {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   })
     .then(() => logger.info('MongoDB connected'))
-    .catch(err => logger.error(err));
+    .catch((err) => logger.error(err));
 }
 
-function close() {
-  mongoose.connection.close();
+function close(callback) {
+  mongoose.connection.close(true, callback);
 }
 
 module.exports = { connect, close };
