@@ -1,6 +1,6 @@
 # Encryption API endpoints with Node.js
 
-[![Releases][release-badge]][release-url]
+[![Latest Release][release-badge]][release-url]
 [![Build Status][github-badge]][github-url]
 [![Docker Pulls][docker-badge]][docker-url]
 
