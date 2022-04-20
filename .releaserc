@@ -1,4 +1,5 @@
 {
+  "repositoryUrl": "https://github.com/timoa/nodejs-encryption-api-example.git",
   "branches": [
     "master",
     "develop"
