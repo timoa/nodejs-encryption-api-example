@@ -25,15 +25,16 @@ The idea with this example is to test how to store encrypted data under a datast
 
 - API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-CBC encryption)
 - API retrieval endpoint that decrypts data with the provided key and returns the data
-- AES-256-CBC encryption that uses a random Initialization Vector (IV)
-- IV stored with the encrypted data (separated by a `:` character)
+- AES-256-GCM encryption that uses a random Initialization Vector (IV)
+- IV and Auth TAG stored with the encrypted data (separated by a `:` character)
 - Logs with correlation ID
+- Hardening of the HTTP Headers with Helmet
 - MongoDB as a data store (using Mongoose)
 - Swagger support for API specifications/documentation (WIP)
 - Health check endpoint to check if the app is still alive
 - Dockerfile to generate the Docker image
 - Docker Compose file to launch the API and MongoDB official Docker images
-- Build, test and deploy to Docker Hub with Travis CI
+- Build, test and deploy to Docker Hub with GitHub Actions
 - SonarQube code quality check (SonarCloud)
 - Unit tests and functional tests
 - Postman collection and environment
