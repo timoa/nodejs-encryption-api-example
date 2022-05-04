@@ -23,9 +23,9 @@ The idea with this example is to test how to store encrypted data under a datast
 
 ## Features
 
-- API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-CBC encryption)
+- API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-GCM encryption)
 - API retrieval endpoint that decrypts data with the provided key and returns the data
-- AES-256-GCM encryption that uses a random Initialization Vector (IV)
+- AES-256-GCM encryption that uses a random Initialization Vector (IV) and Auth TAG
 - IV and Auth TAG stored with the encrypted data (separated by a `:` character)
 - Logs with correlation ID
 - Hardening of the HTTP Headers with Helmet
