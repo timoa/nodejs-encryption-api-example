@@ -1,4 +1,8 @@
 const fastify = require('fastify')();
+const fastifyHelmet = require('@fastify/helmet');
+const fastifyHealthcheck = require('fastify-healthcheck');
+const fastifySwagger = require('fastify-swagger');
+
 const logger = require('./lib/logger');
 const config = require('./config/config.json');
 const routes = require('./routes');
@@ -10,8 +14,13 @@ const port = process.env.NODE_PORT || config.app.port;
 // Connect to MongoDB
 db.connect();
 
+// Register Helmet
+fastify.register(fastifyHelmet, {
+  global: true,
+});
+
 // Register the Health plugin
-fastify.register(require('fastify-healthcheck'), {
+fastify.register(fastifyHealthcheck, {
   healthcheckUrl: `/${config.healthCheck.path}`,
 });
 
@@ -19,7 +28,7 @@ fastify.register(require('fastify-healthcheck'), {
 const swagger = require('./swagger/options');
 
 // Register the Swagger plugin
-fastify.register(require('fastify-swagger'), swagger.options);
+fastify.register(fastifySwagger, swagger.options);
 
 // Load the routes
 routes.forEach((route) => {
