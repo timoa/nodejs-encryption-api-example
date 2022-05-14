@@ -1,3 +1,29 @@
+# [1.2.0](https://github.com/timoa/nodejs-encryption-api-example/compare/v1.1.0...v1.2.0) (2022-05-14)
+
+
+### Bug Fixes
+
+* **cicd:** fix nodejs pipeline ([2f35f57](https://github.com/timoa/nodejs-encryption-api-example/commit/2f35f571b2031eb98ed8ef881aff2a931112f921))
+* **deps:** update dependency @snyk/protect to v1.902.0 ([6512d31](https://github.com/timoa/nodejs-encryption-api-example/commit/6512d3110dac34b19378771332bbd3f65a76ad21))
+* **deps:** update dependency @snyk/protect to v1.903.0 ([f733361](https://github.com/timoa/nodejs-encryption-api-example/commit/f733361e61a68bb3927ba227491f7a3fae456961))
+* **deps:** update dependency @snyk/protect to v1.904.0 ([9c7bca8](https://github.com/timoa/nodejs-encryption-api-example/commit/9c7bca8b1f728f63374d69b2419ae9b6e2dab01c))
+* **deps:** update dependency @snyk/protect to v1.905.0 ([bbe125c](https://github.com/timoa/nodejs-encryption-api-example/commit/bbe125c7fe07ed42525789462ad637a364eb83a3))
+* **deps:** update dependency @snyk/protect to v1.906.0 ([eca8c04](https://github.com/timoa/nodejs-encryption-api-example/commit/eca8c04ecb1cf30ddead94e5fa5999118820a44e))
+* **deps:** update dependency @snyk/protect to v1.907.0 ([7681384](https://github.com/timoa/nodejs-encryption-api-example/commit/7681384bd4708a9966d974ede5aa5b8d2f589b2e))
+* **deps:** update dependency @snyk/protect to v1.908.0 ([1c48afa](https://github.com/timoa/nodejs-encryption-api-example/commit/1c48afa2a587fbefa4075a0f9932eaf974d3dc81))
+* **deps:** update dependency @snyk/protect to v1.910.0 ([d3f91c3](https://github.com/timoa/nodejs-encryption-api-example/commit/d3f91c392416d4fe5ef2ba673181b102bbac1615))
+* **deps:** update dependency @snyk/protect to v1.912.0 ([5c796e1](https://github.com/timoa/nodejs-encryption-api-example/commit/5c796e177038bd5682269642435d98e1b21ca1b2))
+* **deps:** update dependency @snyk/protect to v1.913.0 ([884c1a5](https://github.com/timoa/nodejs-encryption-api-example/commit/884c1a599ce473f381076ab98fb8c9e78f2ca39a))
+* **deps:** update dependency @snyk/protect to v1.914.0 ([fed6f25](https://github.com/timoa/nodejs-encryption-api-example/commit/fed6f25defa85af2d9ae6a3271d610c40a12d9e6))
+* **deps:** update dependency fastify to v3.29.0 ([f2ad318](https://github.com/timoa/nodejs-encryption-api-example/commit/f2ad318a20248abdb0592e096f3e516ead3d6a0d))
+* **deps:** update dependency fastify-swagger to v5.2.0 ([9ea4b34](https://github.com/timoa/nodejs-encryption-api-example/commit/9ea4b34c0fe5ff05d850c3d4ab9868484d796156))
+* **docs:** fix duplicated lines badge link ([4df3cf5](https://github.com/timoa/nodejs-encryption-api-example/commit/4df3cf5ee7413d6e088e257a2237c4635b613aa3))
+
+
+### Features
+
+* **helmet:** add Helmet support to secure HTTP headers ([89a7c41](https://github.com/timoa/nodejs-encryption-api-example/commit/89a7c411c63599b353990b9c09b2afb5086357f6))
+
 # [1.1.0](https://github.com/timoa/nodejs-encryption-api-example/compare/v1.0.0...v1.1.0) (2022-04-15)
 
 
