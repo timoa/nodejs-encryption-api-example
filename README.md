@@ -1,7 +1,9 @@
 # Encryption API endpoints with Node.js
 
+[![Latest Release][release-badge]][release-url]
 [![Build Status][github-badge]][github-url]
 [![Docker Pulls][docker-badge]][docker-url]
+
 [![Quality Gate Status][sonarcloud-status-badge]][sonarcloud-url]
 [![Security Rating][sonarcloud-security-badge]][sonarcloud-url]
 [![Maintainability Rating][sonarcloud-maintainability-badge]][sonarcloud-url]
@@ -21,17 +23,18 @@ The idea with this example is to test how to store encrypted data under a datast
 
 ## Features
 
-- API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-CBC encryption)
+- API storing endpoint that encrypts data with the provided key and stores it into a MongoDB collection (AES-256-GCM encryption)
 - API retrieval endpoint that decrypts data with the provided key and returns the data
-- AES-256-CBC encryption that uses a random Initialization Vector (IV)
-- IV stored with the encrypted data (separated by a `:` character)
+- AES-256-GCM encryption that uses a random Initialization Vector (IV) and Auth TAG
+- IV and Auth TAG stored with the encrypted data (separated by a `:` character)
 - Logs with correlation ID
+- Hardening of the HTTP Headers with Helmet
 - MongoDB as a data store (using Mongoose)
 - Swagger support for API specifications/documentation (WIP)
 - Health check endpoint to check if the app is still alive
 - Dockerfile to generate the Docker image
 - Docker Compose file to launch the API and MongoDB official Docker images
-- Build, test and deploy to Docker Hub with Travis CI
+- Build, test and deploy to Docker Hub with GitHub Actions
 - SonarQube code quality check (SonarCloud)
 - Unit tests and functional tests
 - Postman collection and environment
@@ -247,6 +250,8 @@ This will return an array of results:
 [postman-run-button]: https://run.pstmn.io/button.svg
 [postman-run-url]: https://app.getpostman.com/run-collection/e34aee6688c0937c6643
 [sonarcloud]: https://sonarcloud.io/about
+[release-badge]: https://img.shields.io/github/v/release/timoa/nodejs-encryption-api-example?logoColor=orange
+[release-url]: https://github.com/timoa/nodejs-encryption-api-example/releases
 [github-badge]: https://github.com/timoa/nodejs-encryption-api-example/workflows/Build/badge.svg
 [github-url]: https://github.com/timoa/nodejs-encryption-api-example/actions?query=workflow%3ABuild
 [docker-badge]: https://img.shields.io/docker/pulls/timoa/nodejs-encryption-api-example.svg
@@ -258,4 +263,4 @@ This will return an array of results:
 [sonarcloud-bugs-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=bugs
 [sonarcloud-codesmells-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=code_smells
 [sonarcloud-coverage-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=coverage
-[sonarcloud-duplicated-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_densit
+[sonarcloud-duplicated-badge]: https://sonarcloud.io/api/project_badges/measure?project=timoa_nodejs-encryption-api-example&metric=duplicated_lines_density
