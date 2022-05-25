@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/timoa/nodejs-encryption-api-example#readme",
   "dependencies": {
-    "@fastify/helmet": "8.0.0",
+    "@fastify/helmet": "8.0.1",
     "@hapi/boom": "9.1.4",
     "@snyk/protect": "1.925.0",
     "fastify": "3.29.0",
