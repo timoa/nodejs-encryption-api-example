@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   api:
-    image: timoa/nodejs-encryption-api-example:latest@sha256:f73079c8045d361899b8c372566616cba1249e61edcc6288549a2f3729dd3de6
+    image: timoa/nodejs-encryption-api-example:latest@sha256:33cac806d192b0c025adb464d0dae158785b13ade8826a34ca4d08a8f6a19b61
     environment:
       - NODE_ENV=production
       - NODE_HOST=0.0.0.0
