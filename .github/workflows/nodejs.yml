@@ -110,6 +110,8 @@ jobs:
             api.github.com:443
             pipelines.actions.githubusercontent.com:443
             registry.npmjs.org:443
+            osv-vulnerabilities.storage.googleapis.com:443
+            nvd.nist.gov:443
             pypi.org:443
 
 
