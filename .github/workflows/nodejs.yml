@@ -122,7 +122,7 @@ jobs:
       - name: Save the SCAN reports
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
         with:
-          name: reports
+          name: sast-reports
           path: reports
 
   # -- ZAP Scan ---------------------------------------------------------------
@@ -173,7 +173,7 @@ jobs:
       - name: Save the ZAP reports
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
         with:
-          name: reports
+          name: zap-reports
           path: report_*.*
 
   # -- PRE-RELEASE ------------------------------------------------------------
