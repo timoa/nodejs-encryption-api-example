@@ -119,7 +119,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SCAN_ANNOTATE_PR: true
 
-      - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
+      - name: Save the SCAN reports
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
         with:
           name: reports
           path: reports
@@ -168,6 +169,12 @@ jobs:
         uses: zaproxy/action-full-scan@v0.4.0
         with:
           target: http://localhost:3000
+
+      - name: Save the ZAP reports
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
+        with:
+          name: reports
+          path: report_*.*
 
   # -- PRE-RELEASE ------------------------------------------------------------
   pre-release:
