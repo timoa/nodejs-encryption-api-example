@@ -162,7 +162,7 @@ jobs:
           mongodb-db: encryptionAPI
 
       - name: Start the app
-        run: npm start
+        run: npm start & npx wait-on http://localhost:3000
 
       - name: Run ZAP Scan
         uses: zaproxy/action-full-scan@v0.4.0
