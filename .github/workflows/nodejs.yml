@@ -15,11 +15,26 @@ jobs:
         mongodb: ['5.0']
 
     steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            auth.docker.io:443
+            github.com:443
+            objects.githubusercontent.com:443
+            pipelines.actions.githubusercontent.com:443
+            production.cloudflare.docker.com:443
+            registry-1.docker.io:443
+            registry.npmjs.org:443
+            snyk.io:443
+
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
       - name: Setup Node.js ${{ matrix.node }}
-        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # tag=v3.1.1
+        uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3.3.0
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
@@ -37,7 +52,7 @@ jobs:
         run: npm run test:coverage
 
       - name: Save Code Coverage
-        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535 # tag=v3.0.0
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
         with:
           name: code-coverage
           path: coverage
@@ -49,6 +64,16 @@ jobs:
     needs: tests
 
     steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            pipelines.actions.githubusercontent.com:443
+            sonarcloud.io:443
+
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
@@ -67,32 +92,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  # functional-tests:
-  #   runs-on: ubuntu-latest
-  #   needs: tests
-
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-
-  #     - name: Build docker image
-  #       run: docker build -t timoa/nodejs-encryption-api-example .
-
-  #     - name: Start Docker container
-  #       run: docker-compose up -d
-
-  #     - name: Check Docker container status
-  #       run: docker ps -a
-
-  #     - name: Install dependencies
-  #       run: npm install
-
-  #     - name: Run Functional tests
-  #       run: npm run test:functional
-
-  #     - name: Stop Docker container
-  #       run: docker-compose down
-
   # -- SAST SCAN --------------------------------------------------------------
   code-security:
     name: Code Security
@@ -102,21 +101,96 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
 
     steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            api.github.com:443
+            pipelines.actions.githubusercontent.com:443
+            registry.npmjs.org:443
+            pypi.org:443
+
+
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
       - name: Perform Scan
         uses: ShiftLeftSecurity/scan-action@master
-
         env:
           WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SCAN_ANNOTATE_PR: true
 
-      - uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535 # tag=v3.0.0
+      - name: Save the SCAN reports
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
         with:
-          name: reports
+          name: sast-reports
           path: reports
+
+  # -- ZAP Scan ---------------------------------------------------------------
+  api-security:
+    name: API Security
+    runs-on: ubuntu-latest
+    needs: tests
+    # Skip any PR created by dependabot to avoid permission issues
+    if: (github.actor != 'dependabot[bot]')
+
+    strategy:
+      matrix:
+        node: ['16']
+        mongodb: ['5.0']
+
+    steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@dd5681a7d0c66fb362664d618ef4a90d656f6516
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            auth.docker.io:443
+            bit.ly:443
+            content-signature-2.cdn.mozilla.net:443
+            firefox.settings.services.mozilla.com:443
+            github.com:443
+            news.zaproxy.org:443
+            objects.githubusercontent.com:443
+            pipelines.actions.githubusercontent.com:443
+            production.cloudflare.docker.com:443
+            raw.githubusercontent.com:443
+            registry-1.docker.io:443
+            registry.npmjs.org:443
+            shavar.services.mozilla.com:443
+            snyk.io:443
+            tel.zaproxy.org:443
+            tracking-protection.cdn.mozilla.net:443
+
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # tag=v3.2.0
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@e815fd8a9dfede09fd6e6c144f2c9f4875e933df # tag=1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb }}
+          mongodb-db: encryptionAPI
+
+      - name: Start the app
+        run: npm start > /dev/null &
+
+      - name: Run ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: http://localhost:3000
 
   # -- PRE-RELEASE ------------------------------------------------------------
   pre-release:
@@ -125,9 +199,15 @@ jobs:
     needs:
       - code-quality
       - code-security
+      - api-security
     if: github.ref == 'refs/heads/master'
 
     steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: audit
+
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
@@ -144,12 +224,17 @@ jobs:
     if: github.ref == 'refs/heads/master'
 
     steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: audit
+
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@b2391d37b4157fa4aa2e118d643f417910ff3242 # tag=v3.8.0
+        uses: docker/metadata-action@69f6fc9d46f2f8bf0d5491e4aabe0bb8c6a4678a # tag=v4.0.1
         with:
           images: ${{ github.repository }}
           tags: |
@@ -163,19 +248,19 @@ jobs:
             type=raw,value=latest
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@27d0a4f181a40b142cce983c5393082c365d1480 # tag=v1.2.0
+        uses: docker/setup-qemu-action@8b122486cedac8393e77aa9734c3528886e4a1a8 # tag=v2.0.0
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@f211e3e9ded2d9377c8cadc4489a4e38014bc4c9 # tag=v1.7.0
+        uses: docker/setup-buildx-action@dc7b9719a96d48369863986a06765841d7ea23f6 # tag=v2.0.0
 
       - name: Login to DockerHub
-        uses: docker/login-action@dd4fa0671be5250ee6f50aedf4cb05514abda2c7 # tag=v1.14.1
+        uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b # tag=v2.0.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a # tag=v2.10.0
+        uses: docker/build-push-action@e551b19e49efd4e98792db7592c17c09b89db8d8 # tag=v3.0.0
         with:
           context: .
           push: true

@@ -1,7 +1,7 @@
 const fastify = require('fastify')();
 const fastifyHelmet = require('@fastify/helmet');
 const fastifyHealthcheck = require('fastify-healthcheck');
-const fastifySwagger = require('fastify-swagger');
+const fastifySwagger = require('@fastify/swagger');
 
 const logger = require('./lib/logger');
 const config = require('./config/config.json');
