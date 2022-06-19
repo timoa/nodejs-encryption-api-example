@@ -92,37 +92,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  # functional-tests:
-  #   runs-on: ubuntu-latest
-  #   needs: tests
-
-  #   steps:
-  #     - name: Harden GitHub Actions Runner
-  #       uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
-  #         with:
-  #           egress-policy: audit
-
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-
-  #     - name: Build docker image
-  #       run: docker build -t timoa/nodejs-encryption-api-example .
-
-  #     - name: Start Docker container
-  #       run: docker-compose up -d
-
-  #     - name: Check Docker container status
-  #       run: docker ps -a
-
-  #     - name: Install dependencies
-  #       run: npm install
-
-  #     - name: Run Functional tests
-  #       run: npm run test:functional
-
-  #     - name: Stop Docker container
-  #       run: docker-compose down
-
   # -- SAST SCAN --------------------------------------------------------------
   code-security:
     name: Code Security
@@ -145,7 +114,6 @@ jobs:
 
       - name: Perform Scan
         uses: ShiftLeftSecurity/scan-action@master
-
         env:
           WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -156,6 +124,51 @@ jobs:
           name: reports
           path: reports
 
+  # -- ZAP Scan ---------------------------------------------------------------
+  api-security:
+    name: API Security
+    runs-on: ubuntu-latest
+    needs: tests
+    # Skip any PR created by dependabot to avoid permission issues
+    if: (github.actor != 'dependabot[bot]')
+
+    strategy:
+      matrix:
+        node: ['16']
+        mongodb: ['5.0']
+
+    steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@dd5681a7d0c66fb362664d618ef4a90d656f6516
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # tag=v3.2.0
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@e815fd8a9dfede09fd6e6c144f2c9f4875e933df # tag=1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb }}
+          mongodb-db: encryptionAPI
+
+      - name: Start the app
+        run: npm start
+
+      - name: Run ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: http://localhost:3000
+
   # -- PRE-RELEASE ------------------------------------------------------------
   pre-release:
     name: Prepare Release
@@ -163,6 +176,7 @@ jobs:
     needs:
       - code-quality
       - code-security
+      - api-security
     if: github.ref == 'refs/heads/master'
 
     steps:
