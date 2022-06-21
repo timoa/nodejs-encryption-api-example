@@ -37,4 +37,21 @@ exports.schema = {
       },
     },
   },
+  healthCheck: {
+    description: 'Health check endpoint',
+    tags: ['Status'],
+    body: {
+      type: 'object',
+      properties: {
+        statusCode: {
+          type: 'number',
+          description: 'Status code',
+        },
+        status: {
+          type: 'string',
+          description: 'Status',
+        },
+      },
+    },
+  },
 };
