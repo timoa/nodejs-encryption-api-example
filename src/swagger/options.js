@@ -3,6 +3,8 @@ const config = require('../config/config.json');
 exports.options = {
   routePrefix: '/swagger',
   exposeRoute: true,
+  staticCSP: true,
+  transformStaticCSP: (header) => header,
   swagger: {
     info: {
       title: 'Encryption API with Node.js',
@@ -17,5 +19,9 @@ exports.options = {
     schemes: ['http'],
     consumes: ['application/json'],
     produces: ['application/json'],
+  },
+  uiConfig: {
+    docExpansion: 'full',
+    deepLinking: false,
   },
 };
