@@ -39,7 +39,7 @@
   "dependencies": {
     "@fastify/helmet": "8.1.0",
     "@hapi/boom": "9.1.4",
-    "@snyk/protect": "1.946.0",
+    "@snyk/protect": "1.947.0",
     "fastify": "3.29.0",
     "fastify-healthcheck": "3.1.0",
     "@fastify/swagger": "6.1.0",
