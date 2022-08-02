@@ -17,7 +17,7 @@ services:
       - mongo
   mongo:
     container_name: mongo
-    image: mongo@sha256:82302b06360729842acd27ab8a91c90e244f17e464fcfd366b7427af652c5559
+    image: mongo@sha256:a9775b8686e8c5c298712ae1eea710bb341ffbb3f306dd7681f60c5b8d7fae90
     volumes:
       - ./data:/data/db
     ports:
