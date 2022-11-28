@@ -29,6 +29,7 @@ jobs:
             registry-1.docker.io:443
             registry.npmjs.org:443
             snyk.io:443
+            docker.io:443
 
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
@@ -111,11 +112,12 @@ jobs:
             api.github.com:443
             pipelines.actions.githubusercontent.com:443
             registry.npmjs.org:443
+            registry-1.docker.io:443
             osv-vulnerabilities.storage.googleapis.com:443
             nvd.nist.gov:443
             pypi.org:443
-            cfu.zaproxy.org:443
             location.services.mozilla.com:443
+            docker.io:443
 
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
@@ -169,6 +171,9 @@ jobs:
             snyk.io:443
             tel.zaproxy.org:443
             tracking-protection.cdn.mozilla.net:443
+            cfu.zaproxy.org:443
+            location.services.mozilla.com:443
+            docker.io:443
 
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
