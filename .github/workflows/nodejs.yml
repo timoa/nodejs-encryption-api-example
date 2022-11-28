@@ -31,6 +31,7 @@ jobs:
             snyk.io:443
             docker.io:443
             auth.docker.io:443
+            production.cloudflare.docker.com:443
 
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
@@ -120,6 +121,7 @@ jobs:
             location.services.mozilla.com:443
             docker.io:443
             auth.docker.io:443
+            production.cloudflare.docker.com:443
 
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
@@ -159,9 +161,12 @@ jobs:
             api.github.com:443
             auth.docker.io:443
             bit.ly:443
+            cfu.zaproxy.org:443
             content-signature-2.cdn.mozilla.net:443
+            docker.io:443
             firefox.settings.services.mozilla.com:443
             github.com:443
+            location.services.mozilla.com:443
             news.zaproxy.org:443
             objects.githubusercontent.com:443
             pipelines.actions.githubusercontent.com:443
@@ -173,9 +178,6 @@ jobs:
             snyk.io:443
             tel.zaproxy.org:443
             tracking-protection.cdn.mozilla.net:443
-            cfu.zaproxy.org:443
-            location.services.mozilla.com:443
-            docker.io:443
 
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
