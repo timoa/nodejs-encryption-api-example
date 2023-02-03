@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node: ['16']
+        node: ['18']
         mongodb: ['5.0']
 
     steps:
@@ -149,7 +149,7 @@ jobs:
 
     strategy:
       matrix:
-        node: ['16']
+        node: ['18']
         mongodb: ['5.0']
 
     steps:

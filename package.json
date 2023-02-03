@@ -12,9 +12,7 @@
     "test:coverage": "./node_modules/.bin/nyc npm test",
     "test:functional": "./node_modules/.bin/mocha --reporter spec ./test/functional",
     "test:all": "./node_modules/.bin/run-s test:functional test:coverage",
-    "docker:status": "node src/healthcheck",
-    "snyk-protect": "snyk-protect",
-    "prepare": "npm run snyk-protect"
+    "docker:status": "node src/healthcheck"
   },
   "repository": {
     "type": "git",
@@ -39,7 +37,6 @@
   "dependencies": {
     "@fastify/helmet": "8.1.0",
     "@hapi/boom": "9.1.4",
-    "@snyk/protect": "1.1081.0",
     "fastify": "3.29.4",
     "fastify-healthcheck": "3.2.0",
     "@fastify/swagger": "6.1.1",
@@ -49,7 +46,7 @@
     "winston": "3.8.2"
   },
   "engines": {
-    "node": ">=16.0",
+    "node": ">=18.0",
     "npm": ">=8.6.0"
   },
   "os": [

@@ -1,6 +1,5 @@
-FROM node:16.18.1-alpine3.15@sha256:ecf74556cdeee48382e555a377ddb12d36161bd33349dc79290f733f763df711
+FROM node:18.14.0-alpine3.17
 ARG appPort=3000
-# ARG microScannerToken
 
 LABEL maintainer="Damien Laureaux <d.laureaux@timoa.com>" \
       org.label-schema.vendor="Timoa" \
@@ -19,17 +18,6 @@ RUN \
       npm install -g npm@latest && \
       mkdir -p /opt/app && \
       adduser -S app-user
-
-# Aquasec MicroScanner support
-# Search vulnerabilities under the source container
-# Get an API token (free): https://microscanner.aquasec.com/signup
-# Project: https://github.com/aquasecurity/microscanner
-
-# ADD https://get.aquasec.com/microscanner /
-# RUN chmod +x /microscanner && \
-#   /microscanner ${microScannerToken} && \
-#   echo "No vulnerabilities! " && \
-#   date
 
 WORKDIR /opt/app/
 COPY ./package.json ./
