@@ -98,7 +98,10 @@ jobs:
           mongodb-version: ${{ matrix.mongodb }}
           mongodb-db: encryptionAPI
 
-      - name: Run Newman on the API folder
+      - name: Start the app
+        run: npm start > /dev/null &
+
+      - name: Run Postman Newman
         run: node_modules/.bin/newman run https://api.getpostman.com/collections/${{ secrets.POSTMAN_COLLECTION }}?apikey=${{ secrets.POSTMAN_API_TOKEN }} -e https://api.getpostman.com/environments/${{ secrets.POSTMAN_ENVIRONMENT }}?apikey=${{ secrets.POSTMAN_API_TOKEN }}
 
   # -- SONARCLOUD -------------------------------------------------------------
