@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   api:
-    image: timoa/nodejs-encryption-api-example:latest@sha256:f73079c8045d361899b8c372566616cba1249e61edcc6288549a2f3729dd3de6
+    image: timoa/nodejs-encryption-api-example:latest@sha256:33cac806d192b0c025adb464d0dae158785b13ade8826a34ca4d08a8f6a19b61
     environment:
       - NODE_ENV=production
       - NODE_HOST=0.0.0.0
@@ -17,7 +17,7 @@ services:
       - mongo
   mongo:
     container_name: mongo
-    image: mongo@sha256:37e84d3dd30cdfb5472ec42b8a6b4dc6ca7cacd91ebcfa0410a54528bbc5fa6d
+    image: mongo@sha256:134e3f2db743d46bdb7f3eb6bcfa4b8e3dde578c9ff8a10742ce29d706acf9b2
     volumes:
       - ./data:/data/db
     ports:
