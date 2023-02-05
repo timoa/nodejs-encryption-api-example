@@ -60,6 +60,46 @@ jobs:
           name: code-coverage
           path: coverage
 
+  # -- API TESTS --------------------------------------------------------------
+  api-tests:
+    name: API Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: ['18']
+        mongodb: ['5.0']
+
+    steps:
+      - name: Harden GitHub Actions Runner
+        uses: step-security/harden-runner@8f144f8401c4e3693085dff03603f617f566ec6b
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Newman
+        run: npm install newman
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@e815fd8a9dfede09fd6e6c144f2c9f4875e933df # tag=1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb }}
+          mongodb-db: encryptionAPI
+
+      - name: Run Newman on the API folder
+        run: node_modules/.bin/newman run https://api.getpostman.com/collections/${{ secrets.POSTMAN_COLLECTION }}?apikey=${{ secrets.POSTMAN_API_TOKEN }} -e https://api.getpostman.com/environments/${{ secrets.POSTMAN_ENVIRONMENT }}?apikey=${{ secrets.POSTMAN_API_TOKEN }} --folder API
+
   # -- SONARCLOUD -------------------------------------------------------------
   code-quality:
     name: Code Quality
@@ -214,6 +254,7 @@ jobs:
       - code-quality
       - code-security
       - api-security
+      - api-tests
     if: github.ref == 'refs/heads/master'
 
     steps:
