@@ -38,7 +38,7 @@ routes.forEach((route) => {
 // Start the Fastify HTTP server
 const start = async () => {
   try {
-    await fastify.listen(port, host)
+    await fastify.listen({ port, host })
       .then((address) => {
         fastify.swagger();
         logger.info(`Server listening on ${address}`);
