@@ -37,7 +37,7 @@
   "dependencies": {
     "@fastify/helmet": "10.1.0",
     "@fastify/swagger": "8.3.1",
-    "@hapi/boom": "9.1.4",
+    "@hapi/boom": "10.0.0",
     "fastify": "4.12.0",
     "fastify-healthcheck": "4.4.0",
     "lodash": "4.17.21",
