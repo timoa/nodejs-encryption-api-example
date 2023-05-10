@@ -36,7 +36,7 @@ routes.forEach((route) => {
 });
 
 // Start the Fastify HTTP server
-(async function start() {
+const start = async () => {
   try {
     await fastify.listen({ port, host })
       .then((address) => {
@@ -47,4 +47,6 @@ routes.forEach((route) => {
     logger.error(err);
     process.exit(1);
   }
-}());
+};
+
+start();
