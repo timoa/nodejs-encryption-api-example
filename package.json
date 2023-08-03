@@ -41,7 +41,7 @@
     "fastify": "4.19.2",
     "fastify-healthcheck": "4.4.0",
     "lodash": "4.17.21",
-    "mongoose": "5.13.19",
+    "mongoose": "5.13.20",
     "uuid": "8.3.2",
     "winston": "3.9.0"
   },
