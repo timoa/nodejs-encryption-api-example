@@ -245,7 +245,7 @@ jobs:
         run: npm start > /dev/null &
 
       - name: Run ZAP API Scan
-        uses: zaproxy/action-api-scan@d7eab41e224d7427459ca0a3b7523ba7b98f3ccc # v0.3.1
+        uses: zaproxy/action-api-scan@0d599ab8270165cd4e547f87c4e8fd3d6c08b826 # v0.8.0
         with:
           target: http://localhost:3000/swagger/json
           format: openapi
