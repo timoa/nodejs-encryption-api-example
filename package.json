@@ -42,7 +42,7 @@
     "fastify-healthcheck": "4.4.0",
     "lodash": "4.17.21",
     "mongoose": "5.13.20",
-    "uuid": "8.3.2",
+    "uuid": "11.1.1",
     "winston": "3.10.0"
   },
   "engines": {
